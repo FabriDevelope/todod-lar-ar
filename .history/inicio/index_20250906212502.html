@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoDólar-AR - Calculá todos los tipos de dólar y Steam en ARS al instante</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Fondo animado -->
+    <div class="animated-bg"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-logo">
+                    <img src="../logo/logo.png" alt="TodoDólar-AR Logo" class="logo-img">
+                    <div>
+                        <h1 class="header-title">TodoDólar-AR</h1>
+                        <p class="header-subtitle">Calculá todos los tipos de dólar y Steam en ARS al instante</p>
+                    </div>
+                </div>
+                <div class="header-links">
+                    <a href="index.html" class="dev-link">
+                        <i class="fas fa-home"></i> Inicio
+                    </a>
+                    <a href="../desarrollador/index.html" target="_blank" class="dev-link">
+                        <i class="fas fa-code"></i> Desarrollador
+                    </a>
+                    <a href="../contacto/index.html" class="dev-link">
+                        <i class="fas fa-envelope"></i> Contacto
+                    </a>
+                    <a href="../discord-invite/index.html" target="_blank" class="dev-link discord-link">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="../ofertas-steam/index.html" target="_blank" class="steam-btn">
+                        <i class="fab fa-steam"></i> Ofertas Steam
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Input de cálculo -->
+        <section class="calculation-section">
+            <div class="input-container">
+                <div class="input-group">
+                    <i class="fas fa-dollar-sign input-icon"></i>
+                    <input type="number" id="currency-input" placeholder="Ingresá USD o EUR" step="0.01" min="0">
+                </div>
+                <button id="calculate-all-btn" class="calculate-btn">
+                    <i class="fas fa-calculator"></i> Calcular todos
+                </button>
+            </div>
+            <p class="input-description">Ingresá el monto en dólares o euros para calcular su equivalente en pesos argentinos</p>
+        </section>
+
+        <!-- Tarjetas de Juegos/Steam -->
+        <section class="card-section">
+            <div class="section-header">
+                <h2 class="section-title">Juegos / Steam</h2>
+                <p class="section-description">Cotizaciones especiales para servicios de entretenimiento digital</p>
+            </div>
+            <div class="cards-grid" id="steam-cards">
+                <!-- Las tarjetas se generarán con JavaScript -->
+            </div>
+        </section>
+
+        <!-- Tarjetas de Dólar General -->
+        <section class="card-section">
+            <div class="section-header">
+                <h2 class="section-title">Dólar General</h2>
+                <p class="section-description">Todas las cotizaciones del dólar en Argentina</p>
+            </div>
+            <div class="cards-grid" id="general-cards">
+                <!-- Las tarjetas se generarán con JavaScript -->
+            </div>
+        </section>
+
+        <!-- Tarjetas de Euro -->
+        <section class="card-section">
+            <div class="section-header">
+                <h2 class="section-title">Euro</h2>
+                <p class="section-description">Cotizaciones del euro en Argentina</p>
+            </div>
+            <div class="cards-grid" id="euro-cards">
+                <!-- Las tarjetas se generarán con JavaScript -->
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="https://i.imgur.com/8zXZJ7I.png" alt="TodoDólar-AR Logo" class="footer-logo-img">
+                    <span class="footer-title">TodoDólar-AR</span>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html" class="footer-link">
+                        <i class="fas fa-home"></i> Inicio
+                    </a>
+                    <a href="https://store.steampowered.com/search/?filter=topsellers&specials=1" target="_blank" class="footer-link">
+                        <i class="fab fa-steam"></i> Ofertas Steam
+                    </a>
+                    <a href="https://fabridevs.netlify.app" target="_blank" class="footer-link">
+                        <i class="fas fa-code"></i> Desarrollador
+                    </a>
+                    <a href="contacto/index.html" class="footer-link">
+                        <i class="fas fa-envelope"></i> Contacto
+                    </a>
+                    <a href="https://discord.gg/your-invite-code" target="_blank" class="footer-link discord-link">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 TodoDólar-AR - Todos los derechos reservados</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal para cálculo específico -->
+    <div id="calc-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title">Calculadora de Moneda</h3>
+                <button class="modal-close-btn" id="modal-close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="calc-section">
+                    <h4>ARS a <span id="currency-name">Moneda</span></h4>
+                    <div class="calc-input-group">
+                        <input type="number" id="ars-input" placeholder="Ingresá ARS" step="0.01" min="0">
+                        <button class="calc-btn" id="ars-to-currency-btn">Calcular</button>
+                    </div>
+                    <div class="calc-result" id="ars-to-currency-result">
+                        <span class="result-label">Resultado:</span>
+                        <span class="result-value">0.00</span>
+                    </div>
+                </div>
+                <div class="calc-section">
+                    <h4><span id="currency-name-2">Moneda</span> a ARS</h4>
+                    <div class="calc-input-group">
+                        <input type="number" id="currency-input-modal" placeholder="Ingresá monto" step="0.01" min="0">
+                        <button class="calc-btn" id="currency-to-ars-btn">Calcular</button>
+                    </div>
+                    <div class="calc-result" id="currency-to-ars-result">
+                        <span class="result-label">Resultado:</span>
+                        <span class="result-value">$0.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-close-footer-btn" id="modal-close-footer-btn">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

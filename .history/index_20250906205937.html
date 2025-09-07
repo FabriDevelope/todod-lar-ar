@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoDólar-AR - Calculá todos los tipos de dólar y Steam en ARS al instante</title>
+    <meta name="description" content="Calculadora de tipos de dólar y euro a pesos argentinos. Dólar oficial, blue, tarjeta, MEP, CCL, cripto y más.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>TodoDólar-AR</h1>
+            <p>Calculá todos los tipos de dólar y Steam en ARS al instante</p>
+            <div class="developer-link">
+                <a href="https://fabridevs.netlify.app" target="_blank">Desarrollado por FabriDevs</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="input-section">
+            <div class="container">
+                <div class="input-container">
+                    <input type="number" id="amount" placeholder="Ingresá USD o EUR" step="0.01">
+                    <button id="calculate-all">Calcular todos</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="cards-section">
+            <div class="container">
+                <div class="section-title">Juegos / Steam</div>
+                <div class="cards-grid">
+                    <!-- Dólar Steam -->
+                    <div class="card" data-type="steam">
+                        <h3>Dólar Steam</h3>
+                        <div class="values">
+                            <div class="value">
+                                <span class="label">Valor:</span>
+                                <span class="amount">1669.80</span>
+                            </div>
+                        </div>
+                        <div class="result">
+                            <span class="label">ARS:</span>
+                            <span class="result-amount">0.00</span>
+                        </div>
+                        <button class="calculate-btn">Calcular</button>
+                    </div>
+
+                    <!-- Dólar Netflix -->
+                    <div class="card" data-type="netflix">
+                        <h3>Dólar Netflix</h3>
+                        <div class="values">
+                            <div class="value">
+                                <span class="label">Valor:</span>
+                                <span class="amount">2083.80</span>
+                            </div>
+                        </div>
+                        <div class="result">
+                            <span class="label">ARS:</span>
+                            <span class="result-amount">0.00</span>
+                        </div>
+                        <button class="calculate-btn">Calcular</button>
+                    </div>
+                </div>
+
+                <div class="section-title">Dólar General</div>
+                <div class="cards-grid">
+                    <!-- Dólar Oficial -->
+                    <div class="card" data-type="oficial">
+                        <h3>Dólar Oficial</h3>
+                        <div class="values">
+                            <div class="value">
+                                <span class="label">Compra:</span>
+                                <span class="amount">1340.00</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Venta:</span>
+                                <span class="amount">1380.00</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Spread:</span>
+                                <span class="amount">40.00</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Variación:</span>
+                                <span class="amount">0.36%</span>
+                            </div>
+                        </div>
+                        <div class="result">
+                            <span class="label">ARS:</span>
+                            <span class="result-amount">0.00</span>
+                        </div>
+                        <button class="calculate-btn">Calcular</button>
+                    </div>
+
+                    <!-- Oficial Bancos -->
+                    <div class="card" data-type="bancos">
+                        <h3>Oficial Bancos</h3>
+                        <div class="values">
+                            <div class="value">
+                                <span class="label">Compra:</span>
+                                <span class="amount">1344.41</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Venta:</span>
+                                <span class="amount">1386.80</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Spread:</span>
+                                <span class="amount">42.39</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Variación:</span>
+                                <span class="amount">0.30%</span>
+                            </div>
+                        </div>
+                        <div class="result">
+                            <span class="label">ARS:</span>
+                            <span class="result-amount">0.00</span>
+                        </div>
+                        <button class="calculate-btn">Calcular</button>
+                    </div>
+
+                    <!-- Dólar Blue -->
+                    <div class="card" data-type="blue">
+                        <h3>Dólar Blue</h3>
+                        <div class="values">
+                            <div class="value">
+                                <span class="label">Compra:</span>
+                                <span class="amount">1350.00</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Venta:</span>
+                                <span class="amount">1370.00</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Spread:</span>
+                                <span class="amount">20.00</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Variación:</span>
+                                <span class="amount">0.37%</span>
+                            </div>
+                        </div>
+                        <div class="result">
+                            <span class="label">ARS:</span>
+                            <span class="result-amount">0.00</span>
+                        </div>
+                        <button class="calculate-btn">Calcular</button>
+                    </div>
+
+                    <!-- Dólar Tarjeta -->
+                    <div class="card" data-type="tarjeta">
+                        <h3>Dólar Tarjeta</h3>
+                        <div class="values">
+                            <div class="value">
+                                <span class="label">Valor:</span>
+                                <span class="amount">1794.00</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Variación:</span>
+                                <span class="amount">0.36%</span>
+                            </div>
+                        </div>
+                        <div class="result">
+                            <span class="label">ARS:</span>
+                            <span class="result-amount">0.00</span>
+                        </div>
+                        <button class="calculate-btn">Calcular</button>
+                    </div>
+
+                    <!-- Dólar MEP -->
+                    <div class="card" data-type="mep">
+                        <h3>Dólar MEP</h3>
+                        <div class="values">
+                            <div class="value">
+                                <span class="label">Valor:</span>
+                                <span class="amount">1383.33</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Variación:</span>
+                                <span class="amount">0.36%</span>
+                            </div>
+                        </div>
+                        <div class="result">
+                            <span class="label">ARS:</span>
+                            <span class="result-amount">0.00</span>
+                        </div>
+                        <button class="calculate-btn">Calcular</button>
+                    </div>
+
+                    <!-- Dólar CCL -->
+                    <div class="card" data-type="ccl">
+                        <h3>Dólar CCL</h3>
+                        <div class="values">
+                            <div class="value">
+                                <span class="label">Valor:</span>
+                                <span class="amount">1385.55</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Variación:</span>
+                                <span class="amount">0.52%</span>
+                            </div>
+                        </div>
+                        <div class="result">
+                            <span class="label">ARS:</span>
+                            <span class="result-amount">0.00</span>
+                        </div>
+                        <button class="calculate-btn">Calcular</button>
+                    </div>
+
+                    <!-- Dólar Cripto -->
+                    <div class="card" data-type="cripto">
+                        <h3>Dólar Cripto</h3>
+                        <div class="values">
+                            <div class="value">
+                                <span class="label">Compra:</span>
+                                <span class="amount">1381.99</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Venta:</span>
+                                <span class="amount">1394.20</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Spread:</span>
+                                <span class="amount">12.21</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Variación:</span>
+                                <span class="amount">0.31%</span>
+                            </div>
+                        </div>
+                        <div class="result">
+                            <span class="label">ARS:</span>
+                            <span class="result-amount">0.00</span>
+                        </div>
+                        <button class="calculate-btn">Calcular</button>
+                    </div>
+
+                    <!-- Dólar Mayorista -->
+                    <div class="card" data-type="mayorista">
+                        <h3>Dólar Mayorista</h3>
+                        <div class="values">
+                            <div class="value">
+                                <span class="label">Compra:</span>
+                                <span class="amount">1346.00</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Venta:</span>
+                                <span class="amount">1355.00</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Spread:</span>
+                                <span class="amount">9.00</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Variación:</span>
+                                <span class="amount">-0.55%</span>
+                            </div>
+                        </div>
+                        <div class="result">
+                            <span class="label">ARS:</span>
+                            <span class="result-amount">0.00</span>
+                        </div>
+                        <button class="calculate-btn">Calcular</button>
+                    </div>
+
+                    <!-- Dólar Futuro -->
+                    <div class="card" data-type="futuro">
+                        <h3>Dólar Futuro</h3>
+                        <div class="values">
+                            <div class="value">
+                                <span class="label">Compra:</span>
+                                <span class="amount">1391.00</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Venta:</span>
+                                <span class="amount">1394.00</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Spread:</span>
+                                <span class="amount">3.00</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Variación:</span>
+                                <span class="amount">0.00%</span>
+                            </div>
+                        </div>
+                        <div class="result">
+                            <span class="label">ARS:</span>
+                            <span class="result-amount">0.00</span>
+                        </div>
+                        <button class="calculate-btn">Calcular</button>
+                    </div>
+                </div>
+
+                <div class="section-title">Euro</div>
+                <div class="cards-grid">
+                    <!-- Euro Oficial -->
+                    <div class="card" data-type="euro-oficial">
+                        <h3>Euro Oficial</h3>
+                        <div class="values">
+                            <div class="value">
+                                <span class="label">Compra:</span>
+                                <span class="amount">1484.00</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Venta:</span>
+                                <span class="amount">1507.00</span>
+                            </div>
+                        </div>
+                        <div class="result">
+                            <span class="label">ARS:</span>
+                            <span class="result-amount">0.00</span>
+                        </div>
+                        <button class="calculate-btn">Calcular</button>
+                    </div>
+
+                    <!-- Euro Blue -->
+                    <div class="card" data-type="euro-blue">
+                        <h3>Euro Blue</h3>
+                        <div class="values">
+                            <div class="value">
+                                <span class="label">Compra:</span>
+                                <span class="amount">1478.00</span>
+                            </div>
+                            <div class="value">
+                                <span class="label">Venta:</span>
+                                <span class="amount">1489.00</span>
+                            </div>
+                        </div>
+                        <div class="result">
+                            <span class="label">ARS:</span>
+                            <span class="result-amount">0.00</span>
+                        </div>
+                        <button class="calculate-btn">Calcular</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>&copy; 2023 TodoDólar-AR. Todos los derechos reservados.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="contacto/">Contacto</a>
+                    <a href="https://discord.gg/tododolar" target="_blank">Servidor de Discord</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
