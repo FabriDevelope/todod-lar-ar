@@ -163,6 +163,64 @@ body {
     transform: translateY(-2px);
 }
 
+/* Estilos para el selector de países */
+.country-selector {
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.countries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.country-card {
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--light-text);
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+
+.country-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+    border-color: var(--primary-color);
+}
+
+.country-flag {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--primary-color);
+}
+
+.country-flag img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.country-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.country-card p {
+    color: var(--medium-text);
+    font-size: 0.9rem;
+}
+
 /* Input Section */
 .calculation-section {
     margin: 2rem 0;
@@ -230,7 +288,6 @@ body {
 
 .calculate-btn:hover {
     background-color: var(--secondary-color);
-    transform: translateY(-2px);
 }
 
 /* Card Section */
@@ -606,6 +663,109 @@ body {
     color: var(--medium-text);
 }
 
+/* Estilos para el menú de navegación */
+.nav-menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.nav-link {
+    color: var(--medium-text);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-link:hover {
+    background-color: rgba(0, 168, 232, 0.1);
+    color: var(--primary-color);
+}
+
+.nav-link.active {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+}
+
+/* Estilos para la página de estado de la API */
+.estado-api-section {
+    margin: 2rem 0;
+}
+
+.estado-card {
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
+}
+
+.estado-card.success {
+    border-color: #2ecc71;
+}
+
+.estado-card.warning {
+    border-color: #f39c12;
+}
+
+.estado-card.error {
+    border-color: #e74c3c;
+}
+
+.estado-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.estado-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.estado-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.estado-item:last-child {
+    border-bottom: none;
+}
+
+.estado-label {
+    font-weight: 500;
+    color: var(--medium-text);
+}
+
+.estado-value {
+    font-weight: 700;
+    color: var(--light-text);
+}
+
+.success-text {
+    color: #2ecc71;
+}
+
+.warning-text {
+    color: #f39c12;
+}
+
 /* Contact Form Styles */
 .contact-section {
     margin: 2rem 0;
@@ -764,25 +924,7 @@ body {
         flex-direction: column;
     }
     
-#update-interval-select {
-    background: var(--card-bg);
-    color: var(--light-text);
-    border: 1px solid var(--border-color);
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    transition: var(--transition);
-}
-
-#update-interval-select:hover {
-    border-color: var(--accent-color);
-}
-
-#update-interval-select:focus {
-    outline: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 5px var(--accent-color);
-}
-
-
+    .countries-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
 }
