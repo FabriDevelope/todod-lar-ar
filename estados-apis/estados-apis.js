@@ -1,17 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Configuración de las APIs a monitorear
     const apis = [
-        {
-            name: 'Venezuela',
-            flag: 'https://flagcdn.com/w320/ve.png',
-            url: 'https://ve.dolarapi.com/v1/estado',
-            endpoint: 'https://ve.dolarapi.com/v1/dolares'
-        },
+
         {
             name: 'Argentina',
             flag: 'https://flagcdn.com/w320/ar.png',
             url: 'https://dolarapi.com/v1/estado',
             endpoint: 'https://dolarapi.com/v1/dolares'
+        },
+        {
+            name: 'Venezuela',
+            flag: 'https://flagcdn.com/w320/ve.png',
+            url: 'https://ve.dolarapi.com/v1/estado',
+            endpoint: 'https://ve.dolarapi.com/v1/dolares'
         },
         {
             name: 'Uruguay',
