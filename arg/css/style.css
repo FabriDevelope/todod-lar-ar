@@ -763,26 +763,5 @@ body {
     .contact-container {
         flex-direction: column;
     }
-    
-#update-interval-select {
-    background: var(--card-bg);
-    color: var(--light-text);
-    border: 1px solid var(--border-color);
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    transition: var(--transition);
-}
-
-#update-interval-select:hover {
-    border-color: var(--accent-color);
-}
-
-#update-interval-select:focus {
-    outline: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 5px var(--accent-color);
-}
-
 
 }

@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TodoDólAR - Calculá todos los tipos de dólar y Steam en ARS al instante</title>
+    <title>TodoDólAR - Calcula todos los tipos de dólar en VES al instante</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" href="../favicon.png" type="image/png">
+    <link rel="stylesheet" href="../../arg/css/style.css">
+    <link rel="icon" type="image/png" href="../../favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -18,7 +19,7 @@
         <header class="header">
             <div class="header-content">
                 <div class="header-logo">
-                    <img src="../logo/logo.png" alt="TodoDólar-AR Logo" class="logo-img">
+                    <img src="../logo/logo.png" alt="TodoDólAR Logo" class="logo-img">
                     <div>
                         <h1 class="header-title">TodoDólAR</h1>
                         <p class="header-subtitle">Calculá todos los tipos de dólar y Steam en ARS al instante</p>
@@ -37,6 +38,9 @@
                     <a href="../discord-invite/index.html" target="_blank" class="dev-link discord-link">
                         <i class="fab fa-discord"></i>
                     </a>
+                    <a href="../../estados-apis/estados-apis.html" target="_blank" class="dev-link">
+                        <i class="fa-solid fa-share-nodes"></i> Estado APIs
+                    </a>
                     <a href="../ofertas-steam/index.html" target="_blank" class="steam-btn">
                         <i class="fab fa-steam"></i> Ofertas Steam
                     </a>
@@ -49,55 +53,29 @@
             <div class="input-container">
                 <div class="input-group">
                     <i class="fas fa-dollar-sign input-icon"></i>
-                    <input type="number" id="currency-input" placeholder="Ingresá USD o EUR" step="0.01" min="0">
+                    <input type="number" id="currency-input" placeholder="Ingresa USD" step="0.01" min="0">
                 </div>
                 <button id="calculate-all-btn" class="calculate-btn">
                     <i class="fas fa-calculator"></i> Calcular todos
                 </button>
             </div>
-            <p class="input-description">Ingresá el monto en dólares o euros para calcular su equivalente en pesos argentinos</p>
+            <p class="input-description">Ingresa el monto en dólares para calcular su equivalente en Pesos Uruguayos</p>
         </section>
 
         <div id="update-container" style="margin: 15px 0;">
-            <span id="update-text" style="color: var(--light-text); margin-left: 15px;">Actualización cada un minuto</span>
+            <span id="update-text" style="color: var(--light-text); margin-left: 15px;">Actualización cada un (1) minuto</span>
             <div id="update-bar-container" style="background: var(--darker-bg); border-radius: 5px; overflow: hidden; height: 6px; margin-top: 5px;">
                 <div id="update-bar" style="height: 100%; width: 0%; background: var(--accent-color); transition: width 0.1s linear;"></div>
             </div>
         </div>
 
-
-
-
-
-        <!-- Tarjetas de Juegos/Steam -->
-        <section class="card-section">
-            <div class="section-header">
-                <h2 class="section-title">Entretenimiento</h2>
-                <p class="section-description">Cotizaciones especiales para servicios de entretenimiento digital</p>
-            </div>
-            <div class="cards-grid" id="steam-cards">
-                <!-- Las tarjetas se generarán con JavaScript -->
-            </div>
-        </section>
-
         <!-- Tarjetas de Dólar General -->
         <section class="card-section">
             <div class="section-header">
-                <h2 class="section-title">Dólar General</h2>
-                <p class="section-description">Todas las cotizaciones del dólar en Argentina</p>
+                <h2 class="section-title">Cotizaciones / Monedas</h2>
+                <p class="section-description">Todas las cotizaciones y monedas en Uruguay</p>
             </div>
             <div class="cards-grid" id="general-cards">
-                <!-- Las tarjetas se generarán con JavaScript -->
-            </div>
-        </section>
-
-        <!-- Tarjetas de Euro -->
-        <section class="card-section">
-            <div class="section-header">
-                <h2 class="section-title">Otras Monedas</h2>
-                <p class="section-description">Cotizaciones de otras monedas en Argentina</p>
-            </div>
-            <div class="cards-grid" id="euro-cards">
                 <!-- Las tarjetas se generarán con JavaScript -->
             </div>
         </section>
@@ -128,6 +106,9 @@
                     <a href="../contacto/index.html" class="footer-link">
                         <i class="fas fa-envelope"></i> Contacto
                     </a>
+                    <a href="../../estados-apis/estados-apis.html" target="_blank" class="footer-link">
+                        <i class="fa-solid fa-share-nodes"></i> Estado APIs
+                    </a>
                     <a href="../discord-invite/index.html" target="_blank" class="footer-link discord-link">
                         <i class="fab fa-discord"></i>
                     </a>
@@ -150,25 +131,23 @@
             </div>
             <div class="modal-body">
                 <div class="calc-section">
-                    <h4>ARS a <span id="currency-name">Moneda</span></h4>
+                    <h4>UYU a <span id="currency-name">Moneda</span></h4>
                     <div class="calc-input-group">
-                        <input type="number" id="ars-input" placeholder="Ingresá ARS" step="0.01" min="0">
-                        <button class="calc-btn" id="ars-to-currency-btn">Calcular</button>
+                        <input type="number" id="ves-input" placeholder="Ingresa VES" step="0.01" min="0">
+                        <button class="calc-btn" id="ves-to-currency-btn">Calcular</button>
                     </div>
-                    <div class="calc-result" id="ars-to-currency-result">
-                        <span class="result-label">Resultado:</span>
+                    <div class="calc-result" id="ves-to-currency-result">
                         <span class="result-value">0.00</span>
                     </div>
                 </div>
                 <div class="calc-section">
-                    <h4><span id="currency-name-2">Moneda</span> a ARS</h4>
+                    <h4><span id="currency-name-2">Moneda</span> a UYU</h4>
                     <div class="calc-input-group">
-                        <input type="number" id="currency-input-modal" placeholder="Ingresá monto" step="0.01" min="0">
-                        <button class="calc-btn" id="currency-to-ars-btn">Calcular</button>
+                        <input type="number" id="currency-input-modal" placeholder="Ingresa monto" step="0.01" min="0">
+                        <button class="calc-btn" id="currency-to-ves-btn">Calcular</button>
                     </div>
-                    <div class="calc-result" id="currency-to-ars-result">
-                        <span class="result-label">Resultado:</span>
-                        <span class="result-value">$0.00</span>
+                    <div class="calc-result" id="currency-to-ves-result">
+                        <span class="result-value">Bs 0.00</span>
                     </div>
                 </div>
             </div>
