@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TodoDólar-AR - Calculá todos los tipos de dólar y Steam en ARS al instante</title>
+    <title>TodoDólAR - Calculá todos los tipos de dólar y Steam en ARS al instante</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
                 <div class="header-logo">
                     <img src="../logo/logo.png" alt="TodoDólar-AR Logo" class="logo-img">
                     <div>
-                        <h1 class="header-title">TodoDólar-AR</h1>
+                        <h1 class="header-title">TodoDólAR</h1>
                         <p class="header-subtitle">Calculá todos los tipos de dólar y Steam en ARS al instante</p>
                     </div>
                 </div>
@@ -58,10 +58,21 @@
             <p class="input-description">Ingresá el monto en dólares o euros para calcular su equivalente en pesos argentinos</p>
         </section>
 
+        <div id="update-container" style="margin: 15px 0;">
+            <span id="update-text" style="color: var(--light-text); margin-left: 15px;">Actualización cada un minuto</span>
+            <div id="update-bar-container" style="background: var(--darker-bg); border-radius: 5px; overflow: hidden; height: 6px; margin-top: 5px;">
+                <div id="update-bar" style="height: 100%; width: 0%; background: var(--accent-color); transition: width 0.1s linear;"></div>
+            </div>
+        </div>
+
+
+
+
+
         <!-- Tarjetas de Juegos/Steam -->
         <section class="card-section">
             <div class="section-header">
-                <h2 class="section-title">Juegos / Steam</h2>
+                <h2 class="section-title">Entretenimiento</h2>
                 <p class="section-description">Cotizaciones especiales para servicios de entretenimiento digital</p>
             </div>
             <div class="cards-grid" id="steam-cards">
@@ -83,8 +94,8 @@
         <!-- Tarjetas de Euro -->
         <section class="card-section">
             <div class="section-header">
-                <h2 class="section-title">Euro</h2>
-                <p class="section-description">Cotizaciones del euro en Argentina</p>
+                <h2 class="section-title">Otras Monedas</h2>
+                <p class="section-description">Cotizaciones de otras monedas en Argentina</p>
             </div>
             <div class="cards-grid" id="euro-cards">
                 <!-- Las tarjetas se generarán con JavaScript -->
@@ -95,8 +106,8 @@
         <footer class="footer">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="../logo/logo.png" alt="TodoDólar-AR Logo" class="footer-logo-img">
-                    <span class="footer-title">TodoDólar-AR</span>
+                    <img src="../logo/logo.png" alt="TodoDólAR Logo" class="footer-logo-img">
+                    <span class="footer-title">TodoDólAR</span>
                 </div>
                 <div class="footer-links">
                     <a href="index.html" class="footer-link">
@@ -117,7 +128,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 TodoDólar-AR - Todos los derechos reservados</p>
+                <p>&copy; 2025 TodoDólAR - Todos los derechos reservados丨API Utilizada: <a href="https://dolarapi.com/docs/argentina/" target="_blank">DolarAPI</a>丨<a href="https://github.com/FabriDevelope/todod-lar-ar" target="_blank">Repositorio</a> publico de TodoDólAR</p>
             </div>
         </footer>
     </div>
