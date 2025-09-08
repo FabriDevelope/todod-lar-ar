@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const currencyData = {
         steam: [
-            { name: 'Dólar Steam', buy: 1724.25, sell: null, spread: null, icon: 'fa-gamepad"' },
-            { name: 'Dólar Netflix', buy: 2151.75, sell: null, spread: null, icon: 'fa-play-circle' }
+            { name: 'Dólar Steam', buy: 1724.25, sell: null, spread: null, change: 3.26, icon: 'fa-gamepad"' },
+            { name: 'Dólar Netflix', buy: 2151.75, sell: null, spread: null, change: 3.26, icon: 'fa-play-circle' }
         ],
         general: [],
         euro: []
