@@ -1,9 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const currencyData = {
-        steam: [
-            { name: 'Dólar Steam', buy: 1724.25, sell: null, spread: null, change: 3.26, icon: 'fa-gamepad"' },
-            { name: 'Dólar Netflix', buy: 2151.75, sell: null, spread: null, change: 3.26, icon: 'fa-play-circle' }
-        ],
+        steam: [],
         general: [],
         euro: []
     };
@@ -24,9 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if(name.includes('cripto')) return 'Dólar Cripto';
             if(name.includes('mayorista')) return 'Dólar Mayorista';
             if(name.includes('futuro')) return 'Dólar Futuro';
-            if(name.includes('oficial')) return 'Dólar Oficial';
+            if(name.includes('oficial')) return 'Oficial Bancos'; // renombrado
             if(name.includes('euro')) return 'Euro'; 
-            if(name.includes('liqui')) return 'Contado Con Liquidación';
+            if(name.includes('liqui')) return 'Contado Con Liqui';
             return d.casa.charAt(0).toUpperCase() + d.casa.slice(1);
         }
         return 'Moneda';
@@ -43,9 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 🔹 Renombrar según tipo/pais (Euros / otras monedas)
     function renameEuroCurrency(d) {
-        // Capitaliza como antes
         const nombreOriginal = d.casa ? d.casa.charAt(0).toUpperCase() + d.casa.slice(1) : 'Moneda';
-        // Reemplaza por nombre amigable si existe
         return nombresCustom[`${nombreOriginal} (${d.moneda})`] || nombreOriginal + ` (${d.moneda})`;
     }
 
@@ -75,7 +70,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if(currency.buy !== null) cardHTML += `<div class="card-value"><span>Compra:</span><span class="buy-value">$${currency.buy.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',')}</span></div>`;
         if(currency.sell !== null) cardHTML += `<div class="card-value"><span>Venta:</span><span class="sell-value">$${currency.sell.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',')}</span></div>`;
         if(currency.spread !== null) cardHTML += `<div class="card-spread"><span>Spread:</span><span>$${currency.spread.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',')}</span></div>`;
-        if(currency.change !== null){
+
+        // 🔹 Steam usa nota en lugar de change
+        if(currency.note){
+            cardHTML += `<div class="card-change"><span>${currency.note}</span></div>`;
+        } else if(currency.change !== null){
             const changeClass = currency.change>=0?'positive':'negative';
             const changeSymbol = currency.change>=0?'+':'';
             cardHTML += `<div class="card-change"><span>Cambio:</span><span class="${changeClass}">${changeSymbol}${currency.change.toFixed(2)}%</span></div>`;
@@ -168,35 +167,81 @@ document.addEventListener('DOMContentLoaded', function() {
     // 🔹 Fetch API y actualizar
     async function fetchCurrencyData(){
         try{
-            const resDollar = await fetch('https://dolarapi.com/v1/dolares');
-            const dolarData = await resDollar.json();
-            currencyData.general = dolarData.map(d=>{
+            // 🔹 Oficial Bancos y otros
+            const resAmbito = await fetch('https://dolarapi.com/v1/ambito/dolares', { cache: "no-store" });
+            const ambitoData = await resAmbito.json();
+
+            currencyData.general = ambitoData.map(d=>{
                 return {
                     name: renameCurrency(d),
                     buy: parseFloat(d.compra),
                     sell: parseFloat(d.venta),
-                    spread: d.venta?parseFloat(d.venta)-parseFloat(d.compra):null,
-                    change:null,
-                    icon: d.casa.toLowerCase().includes('blue')?'fa-dollar-sign':'fa-landmark'
+                    spread: d.venta ? parseFloat(d.venta)-parseFloat(d.compra) : null,
+                    change: ((parseFloat(d.venta)-parseFloat(d.compra))/parseFloat(d.compra))*100,
+                    icon: d.casa.toLowerCase().includes('blue') ? 'fa-dollar-sign' : 'fa-landmark'
                 };
             });
 
-            const resOther = await fetch('https://dolarapi.com/v1/cotizaciones');
+            // 🔹 Dólar Oficial exacto
+            const resOficial = await fetch('https://dolarapi.com/v1/dolares/oficial', { cache: "no-store" });
+            const oficialData = await resOficial.json();
+            const sellOficial = parseFloat(oficialData.venta);
+
+            // 🔹 Agregamos Dólar Oficial real a la lista general
+            currencyData.general.unshift({
+                name: 'Dólar Oficial',
+                buy: parseFloat(oficialData.compra),
+                sell: sellOficial,
+                spread: sellOficial - parseFloat(oficialData.compra),
+                change: ((sellOficial - parseFloat(oficialData.compra))/parseFloat(oficialData.compra))*100,
+                icon: 'fa-landmark'
+            });
+
+            // 🔹 Dólar Steam y Dólar Netflix
+            const steamBuy = sellOficial * 1.21; // 21% IVA
+            const netflixBuy = sellOficial * 1.51; // 21% IVA + 30% Impuesto País
+
+            currencyData.steam = [
+                {
+                    name: 'Dólar Steam',
+                    buy: steamBuy,
+                    sell: null,
+                    spread: null,
+                    change: null,
+                    icon: 'fa-gamepad',
+                    note: 'Con impuestos agregados: IVA 21%'
+                },
+                {
+                    name: 'Dólar Netflix',
+                    buy: netflixBuy,
+                    sell: null,
+                    spread: null,
+                    change: null,
+                    icon: 'fa-film',
+                    note: 'Con impuestos agregados: 51% (IVA + Impuesto País)'
+                }
+            ];
+
+
+            // 🔹 Cotizaciones otras monedas
+            const resOther = await fetch('https://dolarapi.com/v1/cotizaciones', { cache: "no-store" });
             const otherData = await resOther.json();
             currencyData.euro = otherData.map(d=>{
                 return {
                     name: renameEuroCurrency(d),
                     buy: parseFloat(d.compra),
                     sell: parseFloat(d.venta),
-                    spread: d.venta?parseFloat(d.venta)-parseFloat(d.compra):null,
-                    change:null,
-                    icon: d.casa.toLowerCase().includes('euro')?'fa-euro-sign':'fa-money-bill'
+                    spread: d.venta ? parseFloat(d.venta)-parseFloat(d.compra): null,
+                    change: ((parseFloat(d.venta)-parseFloat(d.compra))/parseFloat(d.compra))*100,
+                    icon: d.casa.toLowerCase().includes('euro') ? 'fa-euro-sign' : 'fa-money-bill'
                 };
             });
 
             createCards();
             resetProgressBar();
-        }catch(e){console.error('Error API:',e);}
+        }catch(e){
+            console.error('Error API:',e);
+        }
     }
 
     // 🔹 Barra de actualización
