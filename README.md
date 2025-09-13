@@ -30,7 +30,7 @@
 - Dólar MEP (Bolsa)  
 - Dólar CCL (Contado con Liquidación)  
 - Dólar Qatar / Ahorro  
-- **Dólar Steam 🎮🔥** → cálculo especial para gamers, muestra el precio final de un juego en Steam con impuestos incluidos.  
+- **Dólar Steam 🎮🔥** → ¡Con impuestos incluidos! 
 - Y muchas otras referencias más (etc...)
 
 ✅ Interfaz rápida, responsive y minimalista, perfecta para escritorio y móvil.
@@ -86,7 +86,7 @@ Interface rápida, responsiva e prática para consultar cotações em tempo real
 
 ## 👨‍💻 Autor
 
-Hecho con 💻 + ☕ por **Fabri**  
+Hecho con 💻 + ☕ por **FabriDevelope**  
 
 <p align="center">
   <a href="https://tododolar.netlify.app">🔗 tododolar.netlify.app</a>
